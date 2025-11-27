@@ -1,0 +1,16 @@
+# yolo/yolov8n_airplanes_no_part1.yaml
+# (вверху — те же parameters и backbone, что в yolov8n.yaml)
+
+head:
+  # Upsample P5 -> P4 и слияние с backbone P4
+  - [-1, 1, nn.Upsample, [None, 2, "nearest"]]    # 10
+  - [[-1, 6], 1, Concat, [1]]                     # с backbone layer 6 (P4)
+  - [-1, 3, C2f, [512]]                           # 12: P4/16
+
+  # Формируем P5 из P4 и SPPF
+  - [-1, 1, Conv, [1024, 3, 2]]                   # 13: downsample -> P5/32
+  - [[-1, 9], 1, Concat, [1]]                     # 14: concat с SPPF (layer 9)
+  - [-1, 3, C2f, [1024]]                          # 15: P5/32
+
+  # Детекция по двум масштабам: P4 и P5
+  - [[12, 15], 1, Detect, [nc]]                   # Detect(P4, P5)
