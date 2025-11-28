@@ -6,7 +6,7 @@ def train(model_cfg: str, run_name: str):
     if torch.backends.mps.is_available():
         device = "mps"
     else:
-        device = "cpu"  # запасной вариант
+        device = "cuda"  # запасной вариант
 
     print(f"Using device: {device}")
 
@@ -24,4 +24,10 @@ def train(model_cfg: str, run_name: str):
     )
 
 if __name__ == "__main__":
-    train("yolov8n.pt", run_name="yolov8n_airplanes_base")
+    # train("yolov8n.pt", run_name="yolov8n_airplanes_base")
+    # train("yolo/yolov8n_airplanes_no_part1.yaml",
+    #       run_name="yolov8n_airplanes_no_part1")
+
+    # 2. без частей 1, 2, 3
+    train("yolo/yolov8n_airplanes_no_part123.yaml",
+          run_name="yolov8n_airplanes_no_part123")

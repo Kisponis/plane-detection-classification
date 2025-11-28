@@ -10,10 +10,10 @@ imgsz: 640
 save: true
 save_period: -1
 cache: false
-device: cpu
-workers: 8
+device: '0'
+workers: 4
 project: null
-name: yolov8n_airplanes_base
+name: yolov8n_airplanes_base5
 exist_ok: false
 pretrained: true
 optimizer: auto
@@ -103,4 +103,4 @@ auto_augment: randaugment
 erasing: 0.4
 cfg: null
 tracker: botsort.yaml
-save_dir: /Users/igor/Documents/GosMyaso/runs/detect/yolov8n_airplanes_base
+save_dir: /mnt/plane-detection-classification/runs/detect/yolov8n_airplanes_base5

@@ -46,7 +46,7 @@ def softmax(x):
     return e / e.sum(axis=1, keepdims=True)
 
 def main():
-    det_sess = load_session("onnx/yolov8n_airplanes_base.onnx")
+    det_sess = load_session( "runs/detect/yolov8n_airplanes_base/weights/best.onnx")
     cls_sess = load_session("onnx/aircraft_resnet18_variant.onnx")
 
     det_input = det_sess.get_inputs()[0]

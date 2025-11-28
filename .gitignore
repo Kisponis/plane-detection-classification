@@ -1,4 +1,10 @@
-data/
-datasets/
-checkpoints/
-*.tar.gz
+data/coco/
+data/coco_airplanes/
+data/fgvc_aircraft/
+
+
+venv/
+.env
+*.egg-info/
+__pycache__/
+*.pyc
